@@ -4,7 +4,7 @@
   <artifactId>jsp4_maven</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <description>maven and rest api</description>
+  <description>mavenand rest api</description>
   <build>
     <plugins>
       <plugin>
@@ -42,13 +42,6 @@
          <version>3.5.11</version>
       </dependency>
       <!-- https://mvnrepository.com/artifact/servlets.com/cos -->
-      <!--파일 업로드-->
-      <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
-      <dependency>
-         <groupId>javax.servlet</groupId>
-         <artifactId>jstl</artifactId>
-         <version>1.2</version>
-      </dependency>
       <dependency>
          <groupId>servlets.com</groupId>
          <artifactId>cos</artifactId>
@@ -72,15 +65,19 @@
          <groupId>org.slf4j</groupId>
          <artifactId>slf4j-simple</artifactId>
          <version>2.0.7</version>
-        
       </dependency>
       <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-      <!--json 문자열을 자바 객체로 변환시켜주는 라이브러리 -->
-	<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-    <version>2.14.2</version>
-	</dependency>
-
+      <!-- JSON 문자열을 자바 객체로 변환시켜주는 라이브러리 -->
+	  <dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.14.2</version>
+	  </dependency>
+	  <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+      <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>jstl</artifactId>
+         <version>1.2</version>
+      </dependency>
    </dependencies>
 </project>

@@ -11,22 +11,25 @@
 				파라미터가 MAP일때는 key 이름과 파라미터(#{}) 이름 동일하게 해야합니다.
 				기본 형식, String은 변수 선언 키워드와 동일하게 합니다.
 -->
-<mapper namespace="tblbuy">
+<mapper namespace="tblcustomer">
 	<!-- 리턴타입이 List일 때에는 제너릭타입만 설정하면 됩니다. -->
-	<select id="selectAll" resultType="BuyDto">
-		select BUY_IDX, tb.customid, tp.PCODE, PNAME, PRICE, QUANTITY, BUY_DATE from tbl_buy tb JOIN TBL_PRODUCT tp ON tb.PCODE = tp.PCODE order by buy_date desc
+	<select id="selectAll" resultType="CustomerDto">
+		SELECT * FROM TBL_CUSTOM
 	</select>
-	<select id="selectById" parameterType="String" resultType="BuyDto">
-		SELECT BUY_IDX, tp.PCODE, PNAME, PRICE, QUANTITY, BUY_DATE FROM TBL_BUY tb JOIN TBL_PRODUCT tp ON tb.PCODE = tp.PCODE WHERE tb.CUSTOMID = #{customid} ORDER BY BUY_DATE DESC
+	<select id="selectById" parameterType="String" resultType="CustomerDto">
+		SELECT * FROM TBL_CUSTOM WHERE CUSTOM_ID = #{custom_id}
+	</select>
+	<select id="selectByNameAndAge" parameterType="CustomerDto" resultType="CustomerDto">
+		SELECT * FROM TBL_CUSTOM WHERE name = #{name} and age = #{age}
 	</select>
 	<!-- insert, update, delete는 리턴 타입 지정 안합니다. (그래도 값은 리턴해줍니다.) -->
-	<insert id="insert" parameterType="BuyDto">
-		INSERT INTO TBL_BUY values (buy_pk_seq.nextval, #{customid}, #{pcode}, #{quantity}, sysdate)
+	<insert id="join" parameterType="CustomerDto">
+		Insert into tbl_custom (custom_id, name, email, age, reg_date) values (#{custom_id},#{name},#{email},#{age}, sysdate)
 	</insert>
-	<update id="update" parameterType="java.util.Map">
-		update tbl_buy set quantity = #{quantity} where buy_idx = #{buy_idx}
+	<update id="modify" parameterType="CustomerDto">
+		UPDATE TBL_CUSTOM SET name = #{name}, EMAIL = #{email}, age = #{age} WHERE CUSTOM_ID = #{custom_id}
 	</update>
-	<delete id="delete" parameterType="int">
-		delete from tbl_buy where buy_idx = #{buy_idx}
+	<delete id="delete" parameterType="String">
+		DELETE FROM TBL_CUSTOM WHERE CUSTOM_ID = #{custom_id}
 	</delete>
 </mapper>

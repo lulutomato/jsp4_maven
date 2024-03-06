@@ -11,7 +11,7 @@ public class SqlSessionBean {
 /*
  * Mybatis 라이브러리의 SqlSession 구현 객체가 dao 에서 Connection 과 PreparedStatement 역할을 합니다.
  * SqlSesseionFactoryBuilder 가  SqlSessionFactory 객체 생성
- * dao에서는 SqlSessionFactory 객체가 SqlSession 객체 생성  : 클래스 의존관계
+ * SqlSessionFactory 객체가 SqlSession 객체 생성  : 클래스 의존관계
  *  => SqlSession 객체로 db sql을 실행합니다.
  * 
  * https://mybatis.org/mybatis-3/ko/getting-started.html 참고로 작성합니다.
@@ -22,10 +22,9 @@ public class SqlSessionBean {
  * 
  */
 	public static SqlSessionFactory sqlSessionFactory;
-	//static 블럭{} : static 변수를 대상으로 실행 코드 모아놓았습니다.
+	// static 변수를 대상으로 실행 코드 모아놓습니다.
 	static {   //변수들이 static 영역에 저장됩니다. why: sqlSessionFactory 를 static으로 만들기 위함.
 		String resource = "mybatis/mybatis-config.xml";    //mybatis 설정파일
-		//resource 변수에 지정된 파일을 읽기위한 입력 스트립 선언
 		InputStream inputStream=null;			//파일을 읽기위한 입력 스트림
 	
 	
@@ -38,7 +37,8 @@ public class SqlSessionBean {
 		//실제 db연결이 성공했을 때 정상적으로 객체가 생성.
 		//읽어온 파일로 factory 생성
 	}
-	//dao에서 필요한 SqlSessionFactory 객체를 리턴
+
+	// dao에서 필요한 SqlkSessionFactory 객체를 리턴
 	public static SqlSessionFactory getSessionFactory() {    
 		return sqlSessionFactory;
 	}

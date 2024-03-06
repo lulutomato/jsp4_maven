@@ -13,16 +13,16 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import day4.mybatis.dao.MybatisProductDao;
-import day4.mybatis.dto.ProductDto;
+import day4.mybatis.dao.MybatisBuyDao;
+import day4.mybatis.dto.BuyDto;
 
-public class ApiProductListController implements Controller {
-	public static final Logger logger = LoggerFactory.getLogger(ApiProductListController.class);
+public class ApiBuyListController implements Controller {
+	public static final Logger logger = LoggerFactory.getLogger(ApiBuyListController.class);
 
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MybatisProductDao dao = new MybatisProductDao();
-		List<ProductDto> list = dao.selectAll();
+		MybatisBuyDao dao = new MybatisBuyDao();
+		List<BuyDto> list = dao.selectAll();
 		
 		ObjectMapper objMapper = new ObjectMapper();
 		String jsonData = objMapper.writeValueAsString(list);

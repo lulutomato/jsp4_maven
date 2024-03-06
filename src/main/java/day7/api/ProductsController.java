@@ -9,21 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import day4.mybatis.dao.MybatisProductDao;
-import day4.mybatis.dto.CateDto;
+import day4.mybatis.dto.CategoryDto;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class ProductsController implements Controller {
-
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	 //카테고리 목록 jsp로 보내 주기 (전달)
-
 		MybatisProductDao dao = new MybatisProductDao();
-		List<CateDto> cateList= dao.getCategories();
-		request.setAttribute("cateList", cateList);
-		
-	 RequestDispatcher dispatcher = request.getRequestDispatcher("products.jsp");
-	 dispatcher.forward(request, response);
+		List<CategoryDto> categoryList = dao.selectCategory();
+		request.setAttribute("categoryList", categoryList);
 
+		RequestDispatcher dispatcher = request.getRequestDispatcher("products.jsp");
+		dispatcher.forward(request, response);
 	}
-
 }

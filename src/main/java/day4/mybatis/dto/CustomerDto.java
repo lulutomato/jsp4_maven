@@ -11,16 +11,15 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Getter
-@ToString
 @AllArgsConstructor
-@NoArgsConstructor				//jacson 라이브러리의 매핑에 필요합니다. json을 자바객체로 변환할 때.
+@NoArgsConstructor // Jackson 라이브러리의 매핑에 필요합니다. json => java 객체로 변환할때
 @EqualsAndHashCode
+@ToString
 public class CustomerDto {
 	private String custom_id;
-	private String name;
+    private String name;
     private String email;
     private int age;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     private Date reg_date;
-
 }
